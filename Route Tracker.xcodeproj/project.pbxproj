@@ -80,15 +80,47 @@
 		7A761F0A261A2A170003DF94 /* Route Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				7A761F0B261A2A170003DF94 /* AppDelegate.swift */,
-				7A761F0D261A2A170003DF94 /* SceneDelegate.swift */,
-				7A761F0F261A2A170003DF94 /* MapViewController.swift */,
+				7A761F26261A575B0003DF94 /* App */,
+				7A761F25261A57460003DF94 /* Resources */,
+				7A761F28261A576D0003DF94 /* Environments */,
+			);
+			path = "Route Tracker";
+			sourceTree = "<group>";
+		};
+		7A761F25261A57460003DF94 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				7A761F11261A2A170003DF94 /* Main.storyboard */,
 				7A761F14261A2A180003DF94 /* Assets.xcassets */,
 				7A761F16261A2A180003DF94 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7A761F26261A575B0003DF94 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7A761F0B261A2A170003DF94 /* AppDelegate.swift */,
+				7A761F0D261A2A170003DF94 /* SceneDelegate.swift */,
+				7A761F29261A579A0003DF94 /* Flows */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		7A761F28261A576D0003DF94 /* Environments */ = {
+			isa = PBXGroup;
+			children = (
 				7A761F19261A2A180003DF94 /* Info.plist */,
 			);
-			path = "Route Tracker";
+			path = Environments;
+			sourceTree = "<group>";
+		};
+		7A761F29261A579A0003DF94 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				7A761F0F261A2A170003DF94 /* MapViewController.swift */,
+			);
+			path = Flows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,7 +389,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LA6FA5G5XC;
-				INFOPLIST_FILE = "Route Tracker/Info.plist";
+				INFOPLIST_FILE = "Route Tracker/Environments/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -377,7 +409,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LA6FA5G5XC;
-				INFOPLIST_FILE = "Route Tracker/Info.plist";
+				INFOPLIST_FILE = "Route Tracker/Environments/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

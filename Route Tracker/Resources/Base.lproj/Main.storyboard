@@ -31,14 +31,24 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="wqW-Ad-yRp">
-                        <barButtonItem key="leftBarButtonItem" title="Marker" id="tZ9-sD-46z">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Start" id="tZ9-sD-46z">
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <connections>
+                                    <action selector="startTracking:" destination="BYZ-38-t0r" id="1iM-hJ-dZB"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Stop" id="EcA-WN-Ahs">
+                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <connections>
+                                    <action selector="stopTracking:" destination="BYZ-38-t0r" id="NTv-ar-YXu"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="Current location" id="Zom-AU-g8c">
+                            <color key="tintColor" systemColor="systemPurpleColor"/>
                             <connections>
-                                <action selector="toggleMarker:" destination="BYZ-38-t0r" id="33c-rv-Ule"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Go to Red Square" id="Zom-AU-g8c">
-                            <connections>
-                                <action selector="goToRedSquare:" destination="BYZ-38-t0r" id="gdp-Di-FED"/>
+                                <action selector="currentLocation:" destination="BYZ-38-t0r" id="r65-oN-Ba7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -72,6 +82,15 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
