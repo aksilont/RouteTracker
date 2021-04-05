@@ -12,20 +12,11 @@ class MapViewController: UIViewController {
     let coordinateMoscow = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)
     
     var locationManager: CLLocationManager?
-    lazy var geocoder: CLGeocoder = {
-        return CLGeocoder()
-    }()
     
     var manualMarker: GMSMarker?
-    var markers: [GMSMarker?] = [] {
-        didSet {
-            if markers.count > 20 {
-                markers[0]?.map = nil
-                markers[0] = nil
-                markers.remove(at: 0)
-            }
-        }
-    }
+    
+    var route: GMSPolyline?
+    var routePath: GMSMutablePath?
     
     @IBOutlet weak var mapView: GMSMapView!
     
@@ -44,10 +35,19 @@ class MapViewController: UIViewController {
     func configureLocationManager() {
         locationManager = CLLocationManager()
         locationManager?.delegate = self
-        locationManager?.requestWhenInUseAuthorization()
+        locationManager?.allowsBackgroundLocationUpdates = true
+        locationManager?.pausesLocationUpdatesAutomatically = false
+        locationManager?.startMonitoringSignificantLocationChanges()
+        locationManager?.requestAlwaysAuthorization()
     }
     
     @IBAction func startTracking(_ sender: Any) {
+        route?.map = nil
+        
+        route = GMSPolyline()
+        routePath = GMSMutablePath()
+        route?.map = mapView
+        
         locationManager?.startUpdatingLocation()
     }
     
@@ -57,13 +57,6 @@ class MapViewController: UIViewController {
     
     @IBAction func currentLocation(_ sender: Any) {
         locationManager?.requestLocation()
-    }
-    
-    private func addMarker(to coordinate: CLLocationCoordinate2D) {
-        let marker = GMSMarker(position: coordinate)
-        marker.title = "\(Date())"
-        marker.map = mapView
-        markers.append(marker)
     }
     
     private func setCamera(to coordinate: CLLocationCoordinate2D) {
@@ -88,12 +81,10 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         
-        addMarker(to: location.coordinate)
-        setCamera(to: location.coordinate)
+        routePath?.add(location.coordinate)
+        route?.path = routePath
         
-        geocoder.reverseGeocodeLocation(location) { (places, error) in
-            print(places?.first ?? "no address")
-        }
+        setCamera(to: location.coordinate)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
