@@ -17,6 +17,9 @@ class MapViewController: UIViewController {
     
     var route: GMSPolyline?
     var routePath: GMSMutablePath?
+    var routeForSave: Route?
+    
+    lazy var realm = RealmService()
     
     @IBOutlet weak var mapView: GMSMapView!
     
@@ -48,11 +51,18 @@ class MapViewController: UIViewController {
         routePath = GMSMutablePath()
         route?.map = mapView
         
+        routeForSave = Route()
+        
         locationManager?.startUpdatingLocation()
     }
     
     @IBAction func stopTracking(_ sender: Any) {
         locationManager?.stopUpdatingLocation()
+        
+        if let routeForSave = routeForSave {
+            realm.saveToRealm([routeForSave], deleteAll: true)
+        }
+        routeForSave = nil
     }
     
     @IBAction func currentLocation(_ sender: Any) {
@@ -85,6 +95,11 @@ extension MapViewController: CLLocationManagerDelegate {
         route?.path = routePath
         
         setCamera(to: location.coordinate)
+        
+        let newPostion = Position()
+        newPostion.latitude = location.coordinate.latitude
+        newPostion.longitude = location.coordinate.longitude
+        routeForSave?.routePath.append(newPostion)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
