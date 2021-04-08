@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A4888A0261F1F6F00D1BB65 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A48889F261F1F6F00D1BB65 /* Position.swift */; };
 		7A761F0C261A2A170003DF94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A761F0B261A2A170003DF94 /* AppDelegate.swift */; };
 		7A761F0E261A2A170003DF94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A761F0D261A2A170003DF94 /* SceneDelegate.swift */; };
 		7A761F10261A2A170003DF94 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A761F0F261A2A170003DF94 /* MapViewController.swift */; };
@@ -21,7 +20,6 @@
 
 /* Begin PBXFileReference section */
 		0231EBF557FE84D845BDDF8D /* Pods-Route Tracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Route Tracker.debug.xcconfig"; path = "Target Support Files/Pods-Route Tracker/Pods-Route Tracker.debug.xcconfig"; sourceTree = "<group>"; };
-		7A48889F261F1F6F00D1BB65 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		7A761F08261A2A170003DF94 /* Route Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Route Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A761F0B261A2A170003DF94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A761F0D261A2A170003DF94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				7A761F26261A575B0003DF94 /* App */,
-				7AEA1A7D261E3CDA003A1C94 /* Entities */,
 				7AEA1A78261E39BB003A1C94 /* Core */,
 				7A761F25261A57460003DF94 /* Resources */,
 				7A761F28261A576D0003DF94 /* Environments */,
@@ -110,6 +107,7 @@
 			children = (
 				7A761F0B261A2A170003DF94 /* AppDelegate.swift */,
 				7A761F0D261A2A170003DF94 /* SceneDelegate.swift */,
+				7AEA1A7D261E3CDA003A1C94 /* Entity */,
 				7A761F29261A579A0003DF94 /* Flows */,
 			);
 			path = App;
@@ -147,13 +145,12 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		7AEA1A7D261E3CDA003A1C94 /* Entities */ = {
+		7AEA1A7D261E3CDA003A1C94 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				7A48889F261F1F6F00D1BB65 /* Position.swift */,
 				7AEA1A7E261E3CFF003A1C94 /* Route.swift */,
 			);
-			path = Entities;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +160,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A761F1C261A2A180003DF94 /* Build configuration list for PBXNativeTarget "Route Tracker" */;
 			buildPhases = (
+				7A1C477C261FA2B800DFF290 /* Swift Lint */,
 				A9608DC299449D6DB159567A /* [CP] Check Pods Manifest.lock */,
 				7A761F04261A2A170003DF94 /* Sources */,
 				7A761F05261A2A170003DF94 /* Frameworks */,
@@ -259,6 +257,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Route Tracker/Pods-Route Tracker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7A1C477C261FA2B800DFF290 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n  exit 1\nfi\n";
+		};
 		A9608DC299449D6DB159567A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -290,7 +306,6 @@
 			files = (
 				7A761F10261A2A170003DF94 /* MapViewController.swift in Sources */,
 				7A761F0C261A2A170003DF94 /* AppDelegate.swift in Sources */,
-				7A4888A0261F1F6F00D1BB65 /* Position.swift in Sources */,
 				7A761F0E261A2A170003DF94 /* SceneDelegate.swift in Sources */,
 				7AEA1A7F261E3CFF003A1C94 /* Route.swift in Sources */,
 				7AEA1A7B261E3A73003A1C94 /* RealmService.swift in Sources */,

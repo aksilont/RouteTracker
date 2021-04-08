@@ -10,9 +10,9 @@ import RealmSwift
 
 class RealmService {
     
-    static var shared = RealmService()
+    static let shared = RealmService()
     
-    var realm: Realm?
+    private var realm: Realm?
     
     private init() {
         realm = try? Realm()

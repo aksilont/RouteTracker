@@ -9,6 +9,21 @@ import Foundation
 import RealmSwift
 import CoreLocation
 
+final class Position: Object {
+    @objc dynamic var latitude: Double
+    @objc dynamic var longitude: Double
+    
+    init(latitude: Double, longitude: Double) {
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+    
+    override init() {
+        latitude = 0.0
+        longitude = 0.0
+    }
+}
+
 final class Route: Object {
     @objc dynamic var id: String = UUID.init().uuidString
     let routePath = List<Position>()

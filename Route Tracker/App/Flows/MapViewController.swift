@@ -9,18 +9,24 @@ import UIKit
 import GoogleMaps
 
 class MapViewController: UIViewController {
-    let coordinateMoscow = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)
+    private let coordinateMoscow = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)
     
-    var backgroundTask: UIBackgroundTaskIdentifier?
-    var locationManager: CLLocationManager?
+    private var backgroundTask: UIBackgroundTaskIdentifier?
+    private var locationManager: CLLocationManager?
     
-    var manualMarker: GMSMarker?
+    private var manualMarker: GMSMarker?
     
-    var route: GMSPolyline?
-    var routePath: GMSMutablePath?
-    var routeForSave: Route?
+    private var route: GMSPolyline?
+    private var routePath: GMSMutablePath?
+    private var routeForSave: Route?
     
-    @IBOutlet weak var mapView: GMSMapView!
+    private var isTracking: Bool = false
+    
+    @IBOutlet weak var mapView: GMSMapView! {
+        didSet {
+            mapView.delegate = self
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +41,11 @@ class MapViewController: UIViewController {
         configureLocationManager()
     }
 
-    func configureMap() {
-        mapView.delegate = self
+    private func configureMap() {
         setCamera(to: coordinateMoscow)
     }
     
-    func configureLocationManager() {
+    private func configureLocationManager() {
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.allowsBackgroundLocationUpdates = true
@@ -50,10 +55,7 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func startTracking(_ sender: Any) {
-        saveRoute()
-        
         route?.map = nil
-        
         route = GMSPolyline()
         routePath = GMSMutablePath()
         route?.map = mapView
@@ -61,12 +63,15 @@ class MapViewController: UIViewController {
         routeForSave = Route()
         
         locationManager?.startUpdatingLocation()
+        isTracking = true
     }
     
     @IBAction func stopTracking(_ sender: Any) {
         locationManager?.stopUpdatingLocation()
+        isTracking = false
         
         saveRoute()
+        routeForSave = nil
         
         guard let backgroundTask = self.backgroundTask else { return }
         UIApplication.shared.endBackgroundTask(backgroundTask)
@@ -75,6 +80,32 @@ class MapViewController: UIViewController {
     
     @IBAction func currentLocation(_ sender: Any) {
         locationManager?.requestLocation()
+    }
+    
+    @IBAction func loadLastRoute(_ sender: Any) {
+        locationManager?.stopUpdatingLocation()
+        isTracking = false
+        routeForSave = nil
+        
+        let results = RealmService.shared.get(Route.self)
+        guard let lastRoute = results?.last else { return }
+        
+        route?.map = nil
+        route = GMSPolyline()
+        routePath = GMSMutablePath()
+        lastRoute.routePath.forEach { postion in
+            routePath?.add(
+                CLLocationCoordinate2D.init(latitude: postion.latitude,
+                                            longitude: postion.longitude)
+            )
+        }
+        route?.path = routePath
+        route?.map = mapView
+        
+        if let routePath = routePath {
+            let update = GMSCameraUpdate.fit(GMSCoordinateBounds(path: routePath))
+            mapView.animate(with: update)
+        }
     }
     
     private func setCamera(to coordinate: CLLocationCoordinate2D) {
@@ -86,7 +117,6 @@ class MapViewController: UIViewController {
             RealmService.shared.deleteAll()
             RealmService.shared.save([routeForSave])
         }
-        routeForSave = nil
     }
 }
 
@@ -107,9 +137,11 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         
-        routePath?.add(location.coordinate)
-        route?.path = routePath
-        routeForSave?.addPosition(with: location.coordinate)
+        if isTracking {
+            routePath?.add(location.coordinate)
+            route?.path = routePath
+            routeForSave?.addPosition(with: location.coordinate)
+        }
         
         setCamera(to: location.coordinate)
     }
