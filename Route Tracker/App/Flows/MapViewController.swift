@@ -11,6 +11,7 @@ import GoogleMaps
 class MapViewController: UIViewController {
     let coordinateMoscow = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)
     
+    var backgroundTask: UIBackgroundTaskIdentifier?
     var locationManager: CLLocationManager?
     
     var manualMarker: GMSMarker?
@@ -25,6 +26,12 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+            guard let backgroundTask = self?.backgroundTask else { return }
+            UIApplication.shared.endBackgroundTask(backgroundTask)
+            self?.backgroundTask = .invalid
+        }
         
         configureMap()
         configureLocationManager()
@@ -63,6 +70,10 @@ class MapViewController: UIViewController {
             realm.saveToRealm([routeForSave], deleteAll: true)
         }
         routeForSave = nil
+        
+        guard let backgroundTask = self.backgroundTask else { return }
+        UIApplication.shared.endBackgroundTask(backgroundTask)
+        self.backgroundTask = .invalid
     }
     
     @IBAction func currentLocation(_ sender: Any) {
