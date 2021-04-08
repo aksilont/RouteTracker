@@ -9,16 +9,15 @@ import Foundation
 import RealmSwift
 import CoreLocation
 
-final class Position: Object {
-    @objc dynamic var latitude = 0.0
-    @objc dynamic var longitude = 0.0
-}
-
 final class Route: Object {
-    @objc dynamic var id = 0
+    @objc dynamic var id: String = UUID.init().uuidString
     let routePath = List<Position>()
     
     override static func primaryKey() -> String? {
         return "id"
+    }
+    
+    func addPosition(with coordinate: CLLocationCoordinate2D) {
+        routePath.append(Position(latitude: coordinate.latitude, longitude: coordinate.longitude))
     }
 }

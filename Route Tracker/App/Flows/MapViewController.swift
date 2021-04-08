@@ -20,8 +20,6 @@ class MapViewController: UIViewController {
     var routePath: GMSMutablePath?
     var routeForSave: Route?
     
-    lazy var realm = RealmService()
-    
     @IBOutlet weak var mapView: GMSMapView!
     
     override func viewDidLoad() {
@@ -52,6 +50,8 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func startTracking(_ sender: Any) {
+        saveRoute()
+        
         route?.map = nil
         
         route = GMSPolyline()
@@ -66,10 +66,7 @@ class MapViewController: UIViewController {
     @IBAction func stopTracking(_ sender: Any) {
         locationManager?.stopUpdatingLocation()
         
-        if let routeForSave = routeForSave {
-            realm.saveToRealm([routeForSave], deleteAll: true)
-        }
-        routeForSave = nil
+        saveRoute()
         
         guard let backgroundTask = self.backgroundTask else { return }
         UIApplication.shared.endBackgroundTask(backgroundTask)
@@ -82,6 +79,14 @@ class MapViewController: UIViewController {
     
     private func setCamera(to coordinate: CLLocationCoordinate2D) {
         mapView.animate(to: GMSCameraPosition.camera(withTarget: coordinate, zoom: 17))
+    }
+    
+    private func saveRoute() {
+        if let routeForSave = routeForSave {
+            RealmService.shared.deleteAll()
+            RealmService.shared.save([routeForSave])
+        }
+        routeForSave = nil
     }
 }
 
@@ -104,13 +109,9 @@ extension MapViewController: CLLocationManagerDelegate {
         
         routePath?.add(location.coordinate)
         route?.path = routePath
+        routeForSave?.addPosition(with: location.coordinate)
         
         setCamera(to: location.coordinate)
-        
-        let newPostion = Position()
-        newPostion.latitude = location.coordinate.latitude
-        newPostion.longitude = location.coordinate.longitude
-        routeForSave?.routePath.append(newPostion)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
