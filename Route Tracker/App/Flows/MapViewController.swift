@@ -9,65 +9,114 @@ import UIKit
 import GoogleMaps
 
 class MapViewController: UIViewController {
-    let coordinateMoscow = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)
+    private let coordinateMoscow = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)
     
-    var locationManager: CLLocationManager?
-    lazy var geocoder: CLGeocoder = {
-        return CLGeocoder()
-    }()
+    private var backgroundTask: UIBackgroundTaskIdentifier?
+    private var locationManager: CLLocationManager?
     
-    var manualMarker: GMSMarker?
-    var markers: [GMSMarker?] = [] {
+    private var manualMarker: GMSMarker?
+    
+    private var route: GMSPolyline?
+    private var routePath: GMSMutablePath?
+    private var routeForSave: Route?
+    
+    private var isTracking: Bool = false
+    
+    @IBOutlet weak var mapView: GMSMapView! {
         didSet {
-            if markers.count > 20 {
-                markers[0]?.map = nil
-                markers[0] = nil
-                markers.remove(at: 0)
-            }
+            mapView.delegate = self
         }
     }
     
-    @IBOutlet weak var mapView: GMSMapView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+            guard let backgroundTask = self?.backgroundTask else { return }
+            UIApplication.shared.endBackgroundTask(backgroundTask)
+            self?.backgroundTask = .invalid
+        }
         
         configureMap()
         configureLocationManager()
     }
 
-    func configureMap() {
-        mapView.delegate = self
+    private func configureMap() {
         setCamera(to: coordinateMoscow)
     }
     
-    func configureLocationManager() {
+    private func configureLocationManager() {
         locationManager = CLLocationManager()
         locationManager?.delegate = self
-        locationManager?.requestWhenInUseAuthorization()
+        locationManager?.allowsBackgroundLocationUpdates = true
+        locationManager?.pausesLocationUpdatesAutomatically = false
+        locationManager?.startMonitoringSignificantLocationChanges()
+        locationManager?.requestAlwaysAuthorization()
     }
     
     @IBAction func startTracking(_ sender: Any) {
+        route?.map = nil
+        route = GMSPolyline()
+        routePath = GMSMutablePath()
+        route?.map = mapView
+        
+        routeForSave = Route()
+        
         locationManager?.startUpdatingLocation()
+        isTracking = true
     }
     
     @IBAction func stopTracking(_ sender: Any) {
         locationManager?.stopUpdatingLocation()
+        isTracking = false
+        
+        saveRoute()
+        routeForSave = nil
+        
+        guard let backgroundTask = self.backgroundTask else { return }
+        UIApplication.shared.endBackgroundTask(backgroundTask)
+        self.backgroundTask = .invalid
     }
     
     @IBAction func currentLocation(_ sender: Any) {
         locationManager?.requestLocation()
     }
     
-    private func addMarker(to coordinate: CLLocationCoordinate2D) {
-        let marker = GMSMarker(position: coordinate)
-        marker.title = "\(Date())"
-        marker.map = mapView
-        markers.append(marker)
+    @IBAction func loadLastRoute(_ sender: Any) {
+        locationManager?.stopUpdatingLocation()
+        isTracking = false
+        routeForSave = nil
+        
+        let results = RealmService.shared.get(Route.self)
+        guard let lastRoute = results?.last else { return }
+        
+        route?.map = nil
+        route = GMSPolyline()
+        routePath = GMSMutablePath()
+        lastRoute.routePath.forEach { postion in
+            routePath?.add(
+                CLLocationCoordinate2D.init(latitude: postion.latitude,
+                                            longitude: postion.longitude)
+            )
+        }
+        route?.path = routePath
+        route?.map = mapView
+        
+        if let routePath = routePath {
+            let update = GMSCameraUpdate.fit(GMSCoordinateBounds(path: routePath))
+            mapView.animate(with: update)
+        }
     }
     
     private func setCamera(to coordinate: CLLocationCoordinate2D) {
         mapView.animate(to: GMSCameraPosition.camera(withTarget: coordinate, zoom: 17))
+    }
+    
+    private func saveRoute() {
+        if let routeForSave = routeForSave {
+            RealmService.shared.deleteAll()
+            RealmService.shared.save([routeForSave])
+        }
     }
 }
 
@@ -88,12 +137,13 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         
-        addMarker(to: location.coordinate)
-        setCamera(to: location.coordinate)
-        
-        geocoder.reverseGeocodeLocation(location) { (places, error) in
-            print(places?.first ?? "no address")
+        if isTracking {
+            routePath?.add(location.coordinate)
+            route?.path = routePath
+            routeForSave?.addPosition(with: location.coordinate)
         }
+        
+        setCamera(to: location.coordinate)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
