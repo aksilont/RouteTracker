@@ -14,7 +14,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        let controller: UIViewController
+        if UserDefaults.standard.bool(forKey: "isLogin" ) {
+            controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(MainViewController.self)
+        } else {
+            controller = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(LoginViewController.self)
+        }
+        window = UIWindow(windowScene: windowScene)
+        
+        window?.rootViewController = UINavigationController(rootViewController: controller)
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

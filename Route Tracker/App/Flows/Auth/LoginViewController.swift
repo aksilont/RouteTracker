@@ -37,11 +37,14 @@ final class LoginViewController: UIViewController {
 final class LoginRouter: BaseRouter {
     
     func toMain() {
-        perform(segue: "toMain")
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(MainViewController.self)
+        setAsRoot(controller)
     }
     
     func onRecovery() {
-        perform(segue: "onRecovery")
+        let controller = UIStoryboard(name: "Auth",bundle: nil)
+            .instantiateViewController(RecoveryPasswordViewController.self)
+        show(controller)
     }
     
 }

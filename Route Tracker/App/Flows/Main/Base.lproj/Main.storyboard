@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KDf-8R-TrZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -8,20 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Launch-->
-        <scene sceneID="s7t-vH-uSm">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Launch" id="npu-wQ-LnB" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="KUJ-dr-Cjy"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UJj-bh-Sds" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="402" y="-287"/>
-        </scene>
         <!--Map-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="Route_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="BYZ-38-t0r" customClass="MapViewController" customModule="Route_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,18 +81,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="903" y="122"/>
+            <point key="canvasLocation" x="1813.0434782608697" y="121.875"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="UGa-n2-xx2">
             <objects>
-                <viewController id="dgc-A1-EJv" customClass="MainViewController" customModule="Route_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="dgc-A1-EJv" customClass="MainViewController" customModule="Route_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Qn-F1-Oa3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3e-5J-Ois">
-                                <rect key="frame" x="150" y="218" width="114" height="42"/>
+                                <rect key="frame" x="150" y="174" width="114" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Show map"/>
                                 <connections>
@@ -110,7 +100,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4p-XR-qT6">
-                                <rect key="frame" x="169" y="310" width="76" height="42"/>
+                                <rect key="frame" x="169" y="266" width="76" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Logout"/>
                                 <connections>
@@ -130,8 +120,6 @@
                     <navigationItem key="navigationItem" id="Qyl-Xk-1D2"/>
                     <connections>
                         <outlet property="router" destination="2hG-IG-9Lr" id="cnC-MJ-QFN"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="toMap" id="887-6M-Eok"/>
-                        <segue destination="npu-wQ-LnB" kind="show" identifier="toLaunch" id="enU-uC-6Uz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ICK-IS-VGb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -144,22 +132,23 @@
             <point key="canvasLocation" x="-118.84057971014494" y="121.875"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="R4m-4e-gd2">
+        <scene sceneID="Erg-d7-SS8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="KDf-8R-TrZ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bKJ-JE-Uc8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="86v-9D-HQv">
+                    <navigationItem key="navigationItem" id="YwV-JS-c7K"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZcN-gx-lRz">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="dgc-A1-EJv" kind="relationship" relationship="rootViewController" id="d57-PT-UP9"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="rz2-ap-7Wa"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BhI-Fl-rri" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TK5-bW-51O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1028.985507246377" y="121.875"/>
+            <point key="canvasLocation" x="902.89855072463774" y="121.875"/>
         </scene>
     </scenes>
     <resources>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kbN-YE-nUL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -11,23 +11,23 @@
         <!--Login View Controller-->
         <scene sceneID="Dd2-WI-eUO">
             <objects>
-                <viewController id="lCt-pt-1ik" customClass="LoginViewController" customModule="Route_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="lCt-pt-1ik" customClass="LoginViewController" customModule="Route_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Q1-yB-9mI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lcI-oL-lxd">
-                                <rect key="frame" x="30" y="218" width="354" height="34"/>
+                                <rect key="frame" x="30" y="174" width="354" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="He8-jZ-9Mx">
-                                <rect key="frame" x="30" y="272" width="354" height="34"/>
+                                <rect key="frame" x="30" y="228" width="354" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2d-dB-jK0">
-                                <rect key="frame" x="182.5" y="376" width="49" height="36"/>
+                                <rect key="frame" x="182.5" y="332" width="49" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54K-J2-9i6">
-                                <rect key="frame" x="121.5" y="432" width="171" height="36"/>
+                                <rect key="frame" x="121.5" y="388" width="171" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Recovery password"/>
                                 <connections>
@@ -63,8 +63,6 @@
                         <outlet property="loginTextField" destination="lcI-oL-lxd" id="YjS-dr-57Z"/>
                         <outlet property="passwordTextField" destination="He8-jZ-9Mx" id="pby-0q-Jkz"/>
                         <outlet property="router" destination="xgL-cp-w9t" id="RER-Wm-IX7"/>
-                        <segue destination="G8K-gP-81o" kind="show" identifier="onRecovery" id="oT6-jF-4zb"/>
-                        <segue destination="fNL-X8-iu6" kind="presentation" identifier="toMain" id="3G9-Au-Jp8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GlT-FE-C1v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -76,29 +74,21 @@
             </objects>
             <point key="canvasLocation" x="710.14492753623199" y="99.776785714285708"/>
         </scene>
-        <!--Main-->
-        <scene sceneID="GKN-Jv-3QQ">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="fNL-X8-iu6" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aa5-2w-XJK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1227" y="-336"/>
-        </scene>
         <!--Recovery Password View Controller-->
         <scene sceneID="Km3-RN-Wwj">
             <objects>
-                <viewController id="G8K-gP-81o" customClass="RecoveryPasswordViewController" customModule="Route_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecoveryPasswordViewController" id="G8K-gP-81o" customClass="RecoveryPasswordViewController" customModule="Route_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PC2-f7-OrT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iXs-LS-qXw">
-                                <rect key="frame" x="30" y="218" width="354" height="34"/>
+                                <rect key="frame" x="30" y="174" width="354" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wv1-hf-3Ok">
-                                <rect key="frame" x="110" y="322" width="194" height="40"/>
+                                <rect key="frame" x="110" y="278" width="194" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="Recovery password"/>
                                 <connections>
@@ -124,24 +114,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wNy-54-xfP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1605.7971014492755" y="99.776785714285708"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="CTD-Zz-97g">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kbN-YE-nUL" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WKU-90-e34">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="lCt-pt-1ik" kind="relationship" relationship="rootViewController" id="xd8-84-8Fi"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2eJ-jl-fgF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-200.00000000000003" y="99.776785714285708"/>
         </scene>
     </scenes>
     <resources>

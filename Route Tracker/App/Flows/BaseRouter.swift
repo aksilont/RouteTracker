@@ -11,29 +11,16 @@ class BaseRouter: NSObject {
     
     @IBOutlet weak var controller: UIViewController!
     
-    func perform<Controller: UIViewController>(
-        segue: String,
-        performanceAction: ((Controller) -> Void)? = nil) {
-        
-        let performanceAction = performanceAction.map { action in
-            { (controller: UIViewController) in
-                guard let controller = controller as? Controller
-                else {
-                    assertionFailure("Waiting \(Controller.self)")
-                    return
-                }
-                action(controller)
-            }
-        }
-        
-        controller?.performSegue(withIdentifier: segue, sender: performanceAction)
+    func show(_ controller: UIViewController) {
+        self.controller.show(controller, sender: nil)
     }
     
-    func prepare(for segue: UIStoryboardSegue,
-                 sender: Any?) {
-        guard let action = sender as? ((UIViewController) -> Void)
-        else { return }
-        action(segue.destination)
+    func present(_ controller: UIViewController) {
+        self.controller.present(controller, animated: true)
+    }
+    
+    func setAsRoot(_ controller: UIViewController) {
+        UIApplication.shared.windows.first?.rootViewController = controller
     }
     
 }

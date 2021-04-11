@@ -20,21 +20,19 @@ class MainViewController: UIViewController {
         router.toLaunch()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        router.prepare(for: segue, sender: sender)
-    }
-    
 }
 
 final class MainRouter: BaseRouter {
     
     func toMap(useless: String) {
-        perform(segue: "toMap") { (controller: MapViewController) in
-            controller.uselessExample = useless
-        }
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(MapViewController.self)
+        controller.uselessExample = "testing"
+        controller.modalPresentationStyle = .fullScreen
+        show(controller)
     }
     
     func toLaunch() {
-        perform(segue: "toLaunch")
+        let controller = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(LoginViewController.self)
+        setAsRoot(UINavigationController(rootViewController: controller))
     }
 }
