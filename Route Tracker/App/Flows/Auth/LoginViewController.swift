@@ -23,10 +23,12 @@ final class LoginViewController: UIViewController {
               login == Constants.login, password == Constants.password
         else { return }
         
-        print("Login did tap")
+        UserDefaults.standard.set(true, forKey: "isLogin")
+        
+        performSegue(withIdentifier: "toMain", sender: sender)
     }
     
     @IBAction func recoveryDidTap(_ sender: Any) {
-        print("Recovery did tap")
+        performSegue(withIdentifier: "onRecovery", sender: sender)
     }
 }
