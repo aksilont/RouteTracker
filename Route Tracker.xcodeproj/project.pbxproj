@@ -15,6 +15,7 @@
 		7A6C1D9926237F12001B8942 /* Launch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A6C1D9826237F12001B8942 /* Launch.storyboard */; };
 		7A6C1D9C26237FAC001B8942 /* RootSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6C1D9B26237FAC001B8942 /* RootSegue.swift */; };
 		7A6C1D9F26238015001B8942 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6C1D9E26238015001B8942 /* LaunchViewController.swift */; };
+		7A6C1DA226238556001B8942 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6C1DA126238556001B8942 /* BaseRouter.swift */; };
 		7A761F0C261A2A170003DF94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A761F0B261A2A170003DF94 /* AppDelegate.swift */; };
 		7A761F0E261A2A170003DF94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A761F0D261A2A170003DF94 /* SceneDelegate.swift */; };
 		7A761F10261A2A170003DF94 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A761F0F261A2A170003DF94 /* MapViewController.swift */; };
@@ -36,6 +37,7 @@
 		7A6C1D9826237F12001B8942 /* Launch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Launch.storyboard; sourceTree = "<group>"; };
 		7A6C1D9B26237FAC001B8942 /* RootSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootSegue.swift; sourceTree = "<group>"; };
 		7A6C1D9E26238015001B8942 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		7A6C1DA126238556001B8942 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		7A761F08261A2A170003DF94 /* Route Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Route Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A761F0B261A2A170003DF94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A761F0D261A2A170003DF94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		7A761F29261A579A0003DF94 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				7A6C1DA126238556001B8942 /* BaseRouter.swift */,
 				7A6C1D9726237F03001B8942 /* Launch */,
 				7A6C1D852620AF67001B8942 /* Auth */,
 				7A6C1D8F26236C39001B8942 /* Main */,
@@ -361,6 +364,7 @@
 				7A761F0E261A2A170003DF94 /* SceneDelegate.swift in Sources */,
 				7A6C1D94262370AA001B8942 /* User.swift in Sources */,
 				7AEA1A7F261E3CFF003A1C94 /* Route.swift in Sources */,
+				7A6C1DA226238556001B8942 /* BaseRouter.swift in Sources */,
 				7AEA1A7B261E3A73003A1C94 /* RealmService.swift in Sources */,
 				7A6C1D9F26238015001B8942 /* LaunchViewController.swift in Sources */,
 				7A6C1D9126236C90001B8942 /* MainViewController.swift in Sources */,

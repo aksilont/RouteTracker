@@ -9,6 +9,8 @@ import UIKit
 import GoogleMaps
 
 class MapViewController: UIViewController {
+    var uselessExample = ""
+    
     private let coordinateMoscow = CLLocationCoordinate2D(latitude: 55.753215, longitude: 37.622504)
     
     private var backgroundTask: UIBackgroundTaskIdentifier?

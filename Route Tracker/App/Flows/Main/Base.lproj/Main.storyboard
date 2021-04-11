@@ -129,11 +129,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="Qyl-Xk-1D2"/>
                     <connections>
+                        <outlet property="router" destination="2hG-IG-9Lr" id="cnC-MJ-QFN"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="toMap" id="887-6M-Eok"/>
                         <segue destination="npu-wQ-LnB" kind="show" identifier="toLaunch" id="enU-uC-6Uz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ICK-IS-VGb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <customObject id="2hG-IG-9Lr" customClass="MainRouter" customModule="Route_Tracker" customModuleProvider="target">
+                    <connections>
+                        <outlet property="controller" destination="dgc-A1-EJv" id="jjK-eM-qk9"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-118.84057971014494" y="121.875"/>
         </scene>

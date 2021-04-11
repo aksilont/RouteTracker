@@ -16,6 +16,7 @@ final class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var router: LoginRouter!
     
     @IBAction func loginDidTap(_ sender: Any) {
         guard let login = loginTextField.text,
@@ -25,10 +26,22 @@ final class LoginViewController: UIViewController {
         
         UserDefaults.standard.set(true, forKey: "isLogin")
         
-        performSegue(withIdentifier: "toMain", sender: sender)
+        router.toMain()
     }
     
     @IBAction func recoveryDidTap(_ sender: Any) {
-        performSegue(withIdentifier: "onRecovery", sender: sender)
+        router.onRecovery()
     }
+}
+
+final class LoginRouter: BaseRouter {
+    
+    func toMain() {
+        perform(segue: "toMain")
+    }
+    
+    func onRecovery() {
+        perform(segue: "onRecovery")
+    }
+    
 }
