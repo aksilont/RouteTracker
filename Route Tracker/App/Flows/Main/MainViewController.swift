@@ -8,31 +8,17 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
-    @IBOutlet weak var router: MainRouter!
+    
+    var onMap: ((String) -> Void)?
+    var onLogout: (() -> Void)?
     
     @IBAction func showMapDidTap(_ sender: Any) {
-        router.toMap(useless: "Testing")
+        onMap?("testing")
     }
     
     @IBAction func logoutDidTap(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "isLogin")
-        router.toLaunch()
+        onLogout?()
     }
     
-}
-
-final class MainRouter: BaseRouter {
-    
-    func toMap(useless: String) {
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(MapViewController.self)
-        controller.uselessExample = "testing"
-        controller.modalPresentationStyle = .fullScreen
-        show(controller)
-    }
-    
-    func toLaunch() {
-        let controller = UIStoryboard(name: "Auth", bundle: nil).instantiateViewController(LoginViewController.self)
-        setAsRoot(UINavigationController(rootViewController: controller))
-    }
 }

@@ -62,15 +62,9 @@
                     <connections>
                         <outlet property="loginTextField" destination="lcI-oL-lxd" id="YjS-dr-57Z"/>
                         <outlet property="passwordTextField" destination="He8-jZ-9Mx" id="pby-0q-Jkz"/>
-                        <outlet property="router" destination="xgL-cp-w9t" id="RER-Wm-IX7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GlT-FE-C1v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <customObject id="xgL-cp-w9t" customClass="LoginRouter" customModule="Route_Tracker" customModuleProvider="target">
-                    <connections>
-                        <outlet property="controller" destination="lCt-pt-1ik" id="oQB-rr-EAt"/>
-                    </connections>
-                </customObject>
             </objects>
             <point key="canvasLocation" x="710.14492753623199" y="99.776785714285708"/>
         </scene>

@@ -14,9 +14,11 @@ final class LoginViewController: UIViewController {
         static let password = "123"
     }
     
+    var onLogin: (() -> Void)?
+    var onRecovery: (() -> Void)?
+    
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var router: LoginRouter!
     
     @IBAction func loginDidTap(_ sender: Any) {
         guard let login = loginTextField.text,
@@ -26,25 +28,10 @@ final class LoginViewController: UIViewController {
         
         UserDefaults.standard.set(true, forKey: "isLogin")
         
-        router.toMain()
+        onLogin?()
     }
     
     @IBAction func recoveryDidTap(_ sender: Any) {
-        router.onRecovery()
+        onRecovery?()
     }
-}
-
-final class LoginRouter: BaseRouter {
-    
-    func toMain() {
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(MainViewController.self)
-        setAsRoot(controller)
-    }
-    
-    func onRecovery() {
-        let controller = UIStoryboard(name: "Auth",bundle: nil)
-            .instantiateViewController(RecoveryPasswordViewController.self)
-        show(controller)
-    }
-    
 }
