@@ -21,7 +21,11 @@ class AuthCoordinator: BaseCoordinator {
             .instantiateViewController(LoginViewController.self)
         
         controller.onRecovery = { [weak self] in
-            self?.showRecoveryModel()
+            self?.showRecoveryModule()
+        }
+        
+        controller.onSignUp = { [weak self] in
+            self?.showSignUpModule()
         }
         
         controller.onLogin = { [weak self] in
@@ -33,9 +37,16 @@ class AuthCoordinator: BaseCoordinator {
         self.rootController = rootController
     }
     
-    private func showRecoveryModel() {
+    private func showRecoveryModule() {
         let controller = UIStoryboard(name: "Auth", bundle: nil)
             .instantiateViewController(RecoveryPasswordViewController.self)
         rootController?.pushViewController(controller, animated: true)
     }
+    
+    private func showSignUpModule() {
+        let controller = UIStoryboard(name: "Auth", bundle: nil)
+            .instantiateViewController(SignUpViewController.self)
+        rootController?.pushViewController(controller, animated: true)
+    }
+    
 }

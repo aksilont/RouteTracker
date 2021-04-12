@@ -9,13 +9,9 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     
-    enum Constants {
-        static let login = "admin"
-        static let password = "123"
-    }
-    
     var onLogin: (() -> Void)?
     var onRecovery: (() -> Void)?
+    var onSignUp: (() -> Void)?
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -23,7 +19,8 @@ final class LoginViewController: UIViewController {
     @IBAction func loginDidTap(_ sender: Any) {
         guard let login = loginTextField.text,
               let password = passwordTextField.text,
-              login == Constants.login, password == Constants.password
+              let user = RealmService.shared.get(User.self, with: login),
+              user.password == password
         else { return }
         
         UserDefaults.standard.set(true, forKey: "isLogin")
@@ -34,4 +31,9 @@ final class LoginViewController: UIViewController {
     @IBAction func recoveryDidTap(_ sender: Any) {
         onRecovery?()
     }
+    
+    @IBAction func signUpDidTap(_ sender: Any) {
+        onSignUp?()
+    }
+    
 }

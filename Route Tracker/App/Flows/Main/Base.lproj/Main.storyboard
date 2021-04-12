@@ -20,8 +20,50 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mha-6e-i67">
+                                <rect key="frame" x="8" y="52" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0vB-Qq-Qrh"/>
+                                    <constraint firstAttribute="width" constant="50" id="6rp-xF-naP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <state key="normal" image="play.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startTracking:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YF5-xQ-6JF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Wl-0Y-GLS">
+                                <rect key="frame" x="8" y="110" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4hp-GE-uE6"/>
+                                    <constraint firstAttribute="width" constant="50" id="Mvn-sL-pen"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" image="stop.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="stopTracking:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YAM-wJ-E3W"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wdb-L1-6xO">
-                                <rect key="frame" x="356" y="96" width="50" height="50"/>
+                                <rect key="frame" x="356" y="52" width="50" height="50"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="32z-Th-Bbh"/>
@@ -41,6 +83,27 @@
                                     <action selector="loadLastRoute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lZj-Cj-r4l"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kS-53-GNb">
+                                <rect key="frame" x="356" y="110" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="14Y-RP-1lJ"/>
+                                    <constraint firstAttribute="width" constant="50" id="m9N-Wk-V0O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" systemColor="systemBlueColor"/>
+                                <state key="normal" image="location.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="currentLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m5g-YD-Ezc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -48,40 +111,25 @@
                             <constraint firstItem="2IR-xW-QOW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6G9-nw-ZoQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2IR-xW-QOW" secondAttribute="trailing" id="B8T-3M-Ftn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Wdb-L1-6xO" secondAttribute="trailing" constant="8" id="Cqa-2F-onJ"/>
+                            <constraint firstItem="Mha-6e-i67" firstAttribute="bottom" secondItem="3Wl-0Y-GLS" secondAttribute="top" constant="-8" id="GoP-EX-c0G"/>
+                            <constraint firstItem="9kS-53-GNb" firstAttribute="top" secondItem="Wdb-L1-6xO" secondAttribute="bottom" constant="8" id="SMg-MV-YK4"/>
                             <constraint firstItem="Wdb-L1-6xO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="ZKo-Jr-yZS"/>
+                            <constraint firstItem="Mha-6e-i67" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="af8-ht-CrW"/>
+                            <constraint firstItem="Mha-6e-i67" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="c6I-kM-DRv"/>
+                            <constraint firstItem="3Wl-0Y-GLS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="ef9-77-V2t"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9kS-53-GNb" secondAttribute="trailing" constant="8" id="paW-uN-tks"/>
                             <constraint firstAttribute="bottom" secondItem="2IR-xW-QOW" secondAttribute="bottom" id="sD5-tZ-hYa"/>
                             <constraint firstItem="2IR-xW-QOW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="zgB-Zv-Jjl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Map" id="wqW-Ad-yRp">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Start" id="tZ9-sD-46z">
-                                <color key="tintColor" systemColor="systemGreenColor"/>
-                                <connections>
-                                    <action selector="startTracking:" destination="BYZ-38-t0r" id="1iM-hJ-dZB"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Stop" id="EcA-WN-Ahs">
-                                <color key="tintColor" systemColor="systemPinkColor"/>
-                                <connections>
-                                    <action selector="stopTracking:" destination="BYZ-38-t0r" id="NTv-ar-YXu"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" title="Current location" id="Zom-AU-g8c">
-                            <color key="tintColor" systemColor="systemPurpleColor"/>
-                            <connections>
-                                <action selector="currentLocation:" destination="BYZ-38-t0r" id="r65-oN-Ba7"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Map" id="wqW-Ad-yRp"/>
                     <connections>
                         <outlet property="mapView" destination="2IR-xW-QOW" id="Nmq-E3-yvL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1813.0434782608697" y="121.875"/>
+            <point key="canvasLocation" x="748" y="122"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="UGa-n2-xx2">
@@ -123,42 +171,23 @@
             </objects>
             <point key="canvasLocation" x="-118.84057971014494" y="121.875"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Erg-d7-SS8">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bKJ-JE-Uc8" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="YwV-JS-c7K"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZcN-gx-lRz">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="rz2-ap-7Wa"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TK5-bW-51O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="902.89855072463774" y="121.875"/>
-        </scene>
     </scenes>
     <resources>
+        <image name="location.circle" catalog="system" width="128" height="121"/>
+        <image name="play.circle" catalog="system" width="128" height="121"/>
         <image name="point.fill.topleft.down.curvedto.point.fill.bottomright.up" catalog="system" width="121" height="128"/>
+        <image name="stop.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

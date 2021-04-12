@@ -14,20 +14,20 @@ class RecoveryPasswordViewController: UIViewController {
     @IBAction func recoveryDidTap(_ sender: Any) {
         guard
             let login = loginTextField.text,
-            login == LoginViewController.Constants.login
+            let user = RealmService.shared.get(User.self, with: login)
         else { return }
         
-        showPassword()
+        showPassword(user.password)
     }
     
-    private func showPassword() {
+    private func showPassword(_ password: String) {
         let alertController = UIAlertController(title: "Password",
-                                                message: "123",
+                                                message: password,
                                                 preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "OK", style: .cancel)
         alertController.addAction(okAction)
         present(alertController, animated: true)
-        
     }
+    
 }

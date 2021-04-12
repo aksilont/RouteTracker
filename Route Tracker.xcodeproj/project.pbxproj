@@ -25,6 +25,7 @@
 		7AECAE2E2624D19E004BFEC3 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AECAE2D2624D19E004BFEC3 /* ApplicationCoordinator.swift */; };
 		7AECAE322624D2D5004BFEC3 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AECAE312624D2D5004BFEC3 /* AuthCoordinator.swift */; };
 		7AECAE352624D2E1004BFEC3 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AECAE342624D2E1004BFEC3 /* MainCoordinator.swift */; };
+		7AECAE382624E488004BFEC3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AECAE372624E488004BFEC3 /* SignUpViewController.swift */; };
 		BDFB27F61FCAC0AAEA8CAA35 /* Pods_Route_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D87A829F0AC8E0750331B495 /* Pods_Route_Tracker.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		7AECAE2D2624D19E004BFEC3 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		7AECAE312624D2D5004BFEC3 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		7AECAE342624D2E1004BFEC3 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainCoordinator.swift; path = "Route Tracker/App/Flows/Auth/MainCoordinator.swift"; sourceTree = SOURCE_ROOT; };
+		7AECAE372624E488004BFEC3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B3C405E286FC19E0388DA5BE /* Pods-Route Tracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Route Tracker.release.xcconfig"; path = "Target Support Files/Pods-Route Tracker/Pods-Route Tracker.release.xcconfig"; sourceTree = "<group>"; };
 		D87A829F0AC8E0750331B495 /* Pods_Route_Tracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Route_Tracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 				7AECAE312624D2D5004BFEC3 /* AuthCoordinator.swift */,
 				7A6C1D892620B0FA001B8942 /* LoginViewController.swift */,
 				7A6C1D8C26236AA2001B8942 /* RecoveryPasswordViewController.swift */,
+				7AECAE372624E488004BFEC3 /* SignUpViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				7A6C1DA926239217001B8942 /* UIViewController+Extension.swift in Sources */,
 				7AECAE2E2624D19E004BFEC3 /* ApplicationCoordinator.swift in Sources */,
 				7A6C1D8D26236AA2001B8942 /* RecoveryPasswordViewController.swift in Sources */,
+				7AECAE382624E488004BFEC3 /* SignUpViewController.swift in Sources */,
 				7A761F10261A2A170003DF94 /* MapViewController.swift in Sources */,
 				7A761F0C261A2A170003DF94 /* AppDelegate.swift in Sources */,
 				7A761F0E261A2A170003DF94 /* SceneDelegate.swift in Sources */,
