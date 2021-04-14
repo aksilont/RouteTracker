@@ -18,9 +18,18 @@ class SignUpViewController: UIViewController {
             let password = passwordTextField.text
         else { return }
         
-        if let user = RealmService.shared.get(User.self, with: login) {
-            user.password = password
-            RealmService.shared.save([user])
+        if RealmService.shared.get(User.self, with: login) != nil {
+            let alertController = UIAlertController(title: "Error",
+                                                    message: "Login is busy. Do u wanna rewrite?",
+                                                    preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
+                RealmService.shared.save([User(login: login, password: password)])
+            })
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alertController.addAction(okAction)
+            alertController.addAction(cancelAction)
+            present(alertController, animated: true)
         } else {
             RealmService.shared.save([User(login: login, password: password)])
         }
