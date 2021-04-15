@@ -9,8 +9,17 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    @IBOutlet weak var loginTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginTextField: UITextField! {
+        didSet {
+            loginTextField.autocorrectionType = .no
+        }
+    }
+    @IBOutlet weak var passwordTextField: UITextField! {
+        didSet {
+            passwordTextField.isSecureTextEntry = true
+            passwordTextField.autocorrectionType = .no
+        }
+    }
     
     @IBAction func singUpDidTap(_ sender: Any) {
         guard

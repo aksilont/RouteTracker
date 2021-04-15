@@ -9,7 +9,11 @@ import UIKit
 
 class RecoveryPasswordViewController: UIViewController {
     
-    @IBOutlet weak var loginTextField: UITextField!
+    @IBOutlet weak var loginTextField: UITextField! {
+        didSet {
+            loginTextField.autocorrectionType = .no
+        }
+    }
     
     @IBAction func recoveryDidTap(_ sender: Any) {
         guard
