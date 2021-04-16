@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="BYZ-38-t0r" customClass="MapViewController" customModule="Route_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2IR-xW-QOW" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mha-6e-i67">
+                                <rect key="frame" x="8" y="52" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0vB-Qq-Qrh"/>
+                                    <constraint firstAttribute="width" constant="50" id="6rp-xF-naP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <state key="normal" image="play.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startTracking:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YF5-xQ-6JF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Wl-0Y-GLS">
+                                <rect key="frame" x="8" y="110" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4hp-GE-uE6"/>
+                                    <constraint firstAttribute="width" constant="50" id="Mvn-sL-pen"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" image="stop.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="stopTracking:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YAM-wJ-E3W"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wdb-L1-6xO">
+                                <rect key="frame" x="356" y="52" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="32z-Th-Bbh"/>
+                                    <constraint firstAttribute="height" constant="50" id="nf7-z1-cx5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" systemColor="systemRedColor"/>
+                                <state key="normal" image="point.fill.topleft.down.curvedto.point.fill.bottomright.up" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loadLastRoute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lZj-Cj-r4l"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kS-53-GNb">
+                                <rect key="frame" x="356" y="110" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="14Y-RP-1lJ"/>
+                                    <constraint firstAttribute="width" constant="50" id="m9N-Wk-V0O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" systemColor="systemBlueColor"/>
+                                <state key="normal" image="location.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="currentLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m5g-YD-Ezc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2IR-xW-QOW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6G9-nw-ZoQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2IR-xW-QOW" secondAttribute="trailing" id="B8T-3M-Ftn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Wdb-L1-6xO" secondAttribute="trailing" constant="8" id="Cqa-2F-onJ"/>
+                            <constraint firstItem="Mha-6e-i67" firstAttribute="bottom" secondItem="3Wl-0Y-GLS" secondAttribute="top" constant="-8" id="GoP-EX-c0G"/>
+                            <constraint firstItem="9kS-53-GNb" firstAttribute="top" secondItem="Wdb-L1-6xO" secondAttribute="bottom" constant="8" id="SMg-MV-YK4"/>
+                            <constraint firstItem="Wdb-L1-6xO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="ZKo-Jr-yZS"/>
+                            <constraint firstItem="Mha-6e-i67" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="af8-ht-CrW"/>
+                            <constraint firstItem="Mha-6e-i67" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="c6I-kM-DRv"/>
+                            <constraint firstItem="3Wl-0Y-GLS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="ef9-77-V2t"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9kS-53-GNb" secondAttribute="trailing" constant="8" id="paW-uN-tks"/>
+                            <constraint firstAttribute="bottom" secondItem="2IR-xW-QOW" secondAttribute="bottom" id="sD5-tZ-hYa"/>
+                            <constraint firstItem="2IR-xW-QOW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="zgB-Zv-Jjl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map" id="wqW-Ad-yRp"/>
+                    <connections>
+                        <outlet property="mapView" destination="2IR-xW-QOW" id="Nmq-E3-yvL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="748" y="122"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="UGa-n2-xx2">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" id="dgc-A1-EJv" customClass="MainViewController" customModule="Route_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Qn-F1-Oa3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3e-5J-Ois">
+                                <rect key="frame" x="150" y="174" width="114" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Show map"/>
+                                <connections>
+                                    <action selector="showMapDidTap:" destination="dgc-A1-EJv" eventType="touchUpInside" id="R8A-mn-H31"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4p-XR-qT6">
+                                <rect key="frame" x="169" y="266" width="76" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutDidTap:" destination="dgc-A1-EJv" eventType="touchUpInside" id="d0N-3G-kzx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4N9-kR-iiJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="M4p-XR-qT6" firstAttribute="centerX" secondItem="1Qn-F1-Oa3" secondAttribute="centerX" id="AbG-bV-qc9"/>
+                            <constraint firstItem="a3e-5J-Ois" firstAttribute="top" secondItem="4N9-kR-iiJ" secondAttribute="top" constant="130" id="OBR-Z5-pbT"/>
+                            <constraint firstItem="a3e-5J-Ois" firstAttribute="centerX" secondItem="1Qn-F1-Oa3" secondAttribute="centerX" id="cS6-14-gUe"/>
+                            <constraint firstItem="M4p-XR-qT6" firstAttribute="top" secondItem="a3e-5J-Ois" secondAttribute="bottom" constant="50" id="qKF-TD-PCJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qyl-Xk-1D2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ICK-IS-VGb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-118.84057971014494" y="121.875"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="location.circle" catalog="system" width="128" height="121"/>
+        <image name="play.circle" catalog="system" width="128" height="121"/>
+        <image name="point.fill.topleft.down.curvedto.point.fill.bottomright.up" catalog="system" width="121" height="128"/>
+        <image name="stop.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
