@@ -31,7 +31,13 @@ class SignUpViewController: UIViewController {
     private func setupSecretView() {
         secretView.frame = view.frame
         secretView.frame.origin.y -= secretView.frame.size.height
-        view.addSubview(secretView)
+        if #available(iOS 13, *) {
+            let sceneDelegate =
+                UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+            sceneDelegate?.window?.addSubview(secretView)
+        } else {
+            UIApplication.shared.keyWindow?.addSubview(secretView)
+        }
         
         addObserver()
     }
@@ -50,14 +56,12 @@ class SignUpViewController: UIViewController {
     @objc func appMovedToBackground() {
         UIView.animate(withDuration: 1.0) {
             self.secretView.frame.origin.y += self.secretView.frame.size.height
-            self.navigationController?.isNavigationBarHidden = true
         }
     }
     
     @objc func appBecomesActive() {
         UIView.animate(withDuration: 1.0) {
             self.secretView.frame.origin.y -= self.secretView.frame.size.height
-            self.navigationController?.isNavigationBarHidden = false
         }
         passwordTextField.text = ""
     }
