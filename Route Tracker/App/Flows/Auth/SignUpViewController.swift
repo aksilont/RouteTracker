@@ -21,6 +21,47 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    lazy var secretView: SecretView = SecretView()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupSecretView()
+    }
+    
+    private func setupSecretView() {
+        secretView.frame = view.frame
+        secretView.frame.origin.y -= secretView.frame.size.height
+        view.addSubview(secretView)
+        
+        addObserver()
+    }
+    
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self,
+                             selector: #selector(appMovedToBackground),
+                             name: UIApplication.willResignActiveNotification,
+                             object: nil)
+        NotificationCenter.default.addObserver(self,
+                             selector: #selector(appBecomesActive),
+                             name: UIApplication.didBecomeActiveNotification,
+                             object: nil)
+    }
+    
+    @objc func appMovedToBackground() {
+        UIView.animate(withDuration: 1.0) {
+            self.secretView.frame.origin.y += self.secretView.frame.size.height
+            self.navigationController?.isNavigationBarHidden = true
+        }
+    }
+    
+    @objc func appBecomesActive() {
+        UIView.animate(withDuration: 1.0) {
+            self.secretView.frame.origin.y -= self.secretView.frame.size.height
+            self.navigationController?.isNavigationBarHidden = false
+        }
+        passwordTextField.text = ""
+    }
+    
     @IBAction func singUpDidTap(_ sender: Any) {
         guard
             let login = loginTextField.text,
