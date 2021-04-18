@@ -19,6 +19,7 @@
 		7A761F13261A2A170003DF94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A761F11261A2A170003DF94 /* Main.storyboard */; };
 		7A761F15261A2A180003DF94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A761F14261A2A180003DF94 /* Assets.xcassets */; };
 		7A761F18261A2A180003DF94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A761F16261A2A180003DF94 /* LaunchScreen.storyboard */; };
+		7AB62CDE2628B8F100AC9FF9 /* SecretView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB62CDD2628B8F100AC9FF9 /* SecretView.swift */; };
 		7AEA1A7B261E3A73003A1C94 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEA1A7A261E3A73003A1C94 /* RealmService.swift */; };
 		7AEA1A7F261E3CFF003A1C94 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEA1A7E261E3CFF003A1C94 /* Route.swift */; };
 		7AECAE2A2624ACAA004BFEC3 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AECAE292624ACAA004BFEC3 /* BaseCoordinator.swift */; };
@@ -45,6 +46,7 @@
 		7A761F14261A2A180003DF94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A761F17261A2A180003DF94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A761F19261A2A180003DF94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AB62CDD2628B8F100AC9FF9 /* SecretView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretView.swift; sourceTree = "<group>"; };
 		7AEA1A7A261E3A73003A1C94 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		7AEA1A7E261E3CFF003A1C94 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		7AECAE292624ACAA004BFEC3 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				7A6C1D862620AF86001B8942 /* Auth.storyboard */,
+				7AB62CDD2628B8F100AC9FF9 /* SecretView.swift */,
 				7AECAE312624D2D5004BFEC3 /* AuthCoordinator.swift */,
 				7A6C1D892620B0FA001B8942 /* LoginViewController.swift */,
 				7A6C1D8C26236AA2001B8942 /* RecoveryPasswordViewController.swift */,
@@ -374,6 +377,7 @@
 				7A761F0E261A2A170003DF94 /* SceneDelegate.swift in Sources */,
 				7A6C1D94262370AA001B8942 /* User.swift in Sources */,
 				7AECAE2A2624ACAA004BFEC3 /* BaseCoordinator.swift in Sources */,
+				7AB62CDE2628B8F100AC9FF9 /* SecretView.swift in Sources */,
 				7AEA1A7F261E3CFF003A1C94 /* Route.swift in Sources */,
 				7AEA1A7B261E3A73003A1C94 /* RealmService.swift in Sources */,
 				7A6C1D9126236C90001B8942 /* MainViewController.swift in Sources */,
