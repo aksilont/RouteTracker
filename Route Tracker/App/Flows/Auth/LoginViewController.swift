@@ -31,6 +31,7 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         setupSecretView()
         print("testing")
+        print("testing 2")
     }
     
     private func setupSecretView() {
