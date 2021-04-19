@@ -30,6 +30,7 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSecretView()
+        print("testing")
     }
     
     private func setupSecretView() {
